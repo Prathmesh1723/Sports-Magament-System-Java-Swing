@@ -27,11 +27,11 @@ public abstract class Enterprise extends Organization {
      public enum EnterpriseType
      {
         Community("Community"),
-        NGO("NGO"),
+        scheduler("scheduler"),
         Provider ("Provider"),
-        Police("Police"),
-        Hospital("Hospital"),
-        FireMan("FireMan");
+        Coach("Coach"),
+        Physician("Physician"),
+        Selector("Selector");
         
         private String enterpriseTypeValue;
         
