@@ -6,8 +6,8 @@ package Project.Organization;
 
 /**
  *
- * @author vidis
+ * @author prath
  */
-public class SelectionCommiteeOrganization {
+public class SelectionCommiitteeOrganisation {
     
 }
