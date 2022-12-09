@@ -26,7 +26,7 @@ private ArrayList<Enterprise> enterpriseList;
     //Create and add new enterprises
     public Enterprise createAndAddEnterprise(String enterpriseName, Enterprise.EnterpriseType type){
         Enterprise enterprise = null;
-        if(type == Enterprise.EnterpriseType.Community){
+         if(type == Enterprise.EnterpriseType.Community){
             enterprise = new CommunityEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
         }
@@ -34,20 +34,20 @@ private ArrayList<Enterprise> enterpriseList;
             enterprise= new ProviderEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
         }
-         else if(type == Enterprise.EnterpriseType.NGO){
-            enterprise= new BadmintonEnterprise(enterpriseName);
+         else if(type == Enterprise.EnterpriseType.scheduler){
+            enterprise= new SchedulerEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
          }
-            else if(type == Enterprise.EnterpriseType.Police){
-            enterprise= new TennisEnterprise(enterpriseName);
+            else if(type == Enterprise.EnterpriseType.Coach){
+            enterprise= new CoachEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
          }
-            else if(type == Enterprise.EnterpriseType.Hospital){
-            enterprise= new CricketEnterprise(enterpriseName);
+            else if(type == Enterprise.EnterpriseType.Physician){
+            enterprise= new Physician(enterpriseName);
             enterpriseList.add(enterprise);
          } 
-            else if(type == Enterprise.EnterpriseType.FireMan){
-            enterprise= new FootballEnterprise(enterpriseName);
+            else if(type == Enterprise.EnterpriseType.Selector){
+            enterprise= new SelectorEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
          }
         return enterprise;
