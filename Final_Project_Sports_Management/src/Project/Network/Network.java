@@ -7,10 +7,9 @@ package Project.Network;
 
 import Project.Enterprise.EnterpriseDirectory;
 
-/**
- *
- * @author prath
- */
+/*
+@author prath
+*/
 
 public class Network {
     private String networkName;
