@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.EventMaker;
+package UI.CommunityEnterprise;
 
 
-import UI.ProviderEnterprise.*;
-import UI.ProviderManager.*;
-import UI.VolunteerOrganization.*;
 import Project.Person.Person;
 import Project.Organization.Organization;
 import Project.Organization.OrganizationDirectory;
-import Project.Organization.VolunteerOrganization;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,23 +16,23 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author sarvesh
+ *  @author vedant
  */
-public class Manageperson extends javax.swing.JPanel {
+public class ManageEmployee extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageEnterprise
      */
-    private OrganizationDirectory orgdirectory;
+   private OrganizationDirectory orgdirectory;
     private JPanel userProcessContainer;
-    public Manageperson(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
+    public ManageEmployee(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
         initComponents();   
         this.userProcessContainer=userProcessContainer;
         this.orgdirectory=orgdirectory;
         populateComboOrganization();
         populateComboOrganizationEmp();
     }
-    //populate volunteer employee table by adding employees
+    //populate community employee table by adding employees
     private void populateTbl(Organization organization){
         DefaultTableModel model = (DefaultTableModel) tblEmp.getModel();
         
@@ -55,19 +51,16 @@ public class Manageperson extends javax.swing.JPanel {
         comboOrg.removeAllItems();
         
         for (Organization organization : orgdirectory.getOrganizationList()){
-            if(organization instanceof VolunteerOrganization)
             comboOrg.addItem(organization);
-            
         }
     }
-    //populate volunteer organization combo box
+    
+    //populate employee - community organization combo box
     public void populateComboOrganizationEmp(){
         comboOrgSelect.removeAllItems();
-        
+
         for (Organization organization : orgdirectory.getOrganizationList()){
-             if(organization instanceof VolunteerOrganization)
             comboOrgSelect.addItem(organization);
-            
         }
     }
     /**
@@ -81,38 +74,38 @@ public class Manageperson extends javax.swing.JPanel {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmp = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         btnAddEmployee = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
         comboOrgSelect = new javax.swing.JComboBox();
         btnBack = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        lbl2 = new javax.swing.JLabel();
         comboOrg = new javax.swing.JComboBox();
 
         jPanel2.setBackground(new java.awt.Color(243, 235, 255));
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Manage Employee");
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Manage Employee");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(lblTitle)
                 .addGap(0, 0, 0))
         );
 
@@ -138,15 +131,15 @@ public class Manageperson extends javax.swing.JPanel {
         jPanel4.setOpaque(false);
 
         btnAddEmployee.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnAddEmployee.setText("Add Employee");
+        btnAddEmployee.setText("Add");
         btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddEmployeeActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setText("Name");
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblName.setText("Name");
 
         txtName.setForeground(new java.awt.Color(153, 0, 153));
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -155,8 +148,8 @@ public class Manageperson extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("Organization");
+        lbl1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl1.setText("Organization");
 
         comboOrgSelect.setForeground(new java.awt.Color(153, 0, 153));
 
@@ -172,8 +165,8 @@ public class Manageperson extends javax.swing.JPanel {
                         .addGap(206, 206, 206))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(comboOrgSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,12 +178,12 @@ public class Manageperson extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboOrgSelect, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAddEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
@@ -206,8 +199,8 @@ public class Manageperson extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel5.setText("Organization");
+        lbl2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl2.setText("Organization");
 
         comboOrg.setForeground(new java.awt.Color(153, 0, 153));
         comboOrg.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +220,7 @@ public class Manageperson extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(comboOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -247,7 +240,7 @@ public class Manageperson extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,14 +314,14 @@ public class Manageperson extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JComboBox comboOrg;
     private javax.swing.JComboBox comboOrgSelect;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblEmp;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
