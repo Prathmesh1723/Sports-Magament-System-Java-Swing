@@ -41,6 +41,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         this.organization=organization;
         this.enterprise=enterprise;
         this.system=system;
+        btnScheduler.setVisible(false);
         
         for (EventMaker eventmaker : ((EventMakerOrganization)organization).getChangemakerlist().getChangeMakerDirectory()) {
             if (account.getEmployee().getPersonName().equals(eventmaker.getEventMakerName())) {
@@ -65,11 +66,12 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             Object[] row = new Object[10];
             row[0] = work.getSender().getEmployee().getPersonName();
             row[1] = work.getSubject();
-            row[2] = ((PlayerWorkRequest) work).getDescription();
-            row[3] = ((PlayerWorkRequest) work).getLocation();
-            row[4] = work.getRequestDate();
-            row[5] = work;
-            row[6] = work.getReciever();
+            row[2] = ((PlayerWorkRequest) work).getPosition();
+            row[3] = ((PlayerWorkRequest) work).getCountry();
+            row[4] = ((PlayerWorkRequest) work).getAge();
+            row[5] = work.getRequestDate();
+            row[6] = work;
+            row[7] = work.getReciever();
             
             model.addRow(row);
            }
@@ -85,65 +87,69 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblT = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEvent = new javax.swing.JTable();
         btnView = new javax.swing.JButton();
         btnAssignTo = new javax.swing.JButton();
         btnComplete = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        labelPosition = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtDesc = new javax.swing.JTextArea();
-        txtSubject = new javax.swing.JTextField();
-        txtLoc = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        countryTxt = new javax.swing.JTextArea();
+        sportTxt = new javax.swing.JTextField();
+        positionTxt = new javax.swing.JTextField();
+        labelSport = new javax.swing.JLabel();
+        labelCountry = new javax.swing.JLabel();
+        labelAge = new javax.swing.JLabel();
+        ageTxt = new javax.swing.JTextField();
+        labelName = new javax.swing.JLabel();
+        nameTxt = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        btnPolice = new javax.swing.JButton();
+        btnCoach = new javax.swing.JButton();
         btnHealth = new javax.swing.JButton();
-        btnFire = new javax.swing.JButton();
-        btnNGO = new javax.swing.JButton();
+        btnSelector = new javax.swing.JButton();
+        btnScheduler = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(243, 235, 255));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Event Maker Work Area");
+        lblT.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblT.setForeground(new java.awt.Color(255, 255, 255));
+        lblT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblT.setText("Tournament Manager Work Area");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(lblT)
                 .addGap(0, 0, 0))
         );
 
         tblEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblEvent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Event Name", "Subject", "Description", "Location", "Date", "Status", "Event Maker"
+                "Player Name", "Sport", "Position", "Country", "Age", "Date", "Status", "Event Maker"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -179,79 +185,114 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.setOpaque(false);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
-        jLabel4.setText("Location");
+        labelPosition.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        labelPosition.setText("Position");
 
-        txtDesc.setEditable(false);
-        txtDesc.setColumns(20);
-        txtDesc.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtDesc.setRows(5);
-        jScrollPane2.setViewportView(txtDesc);
+        countryTxt.setEditable(false);
+        countryTxt.setColumns(20);
+        countryTxt.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        countryTxt.setRows(5);
+        jScrollPane2.setViewportView(countryTxt);
 
-        txtSubject.setEditable(false);
-        txtSubject.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
-        txtSubject.setForeground(new java.awt.Color(153, 0, 153));
+        sportTxt.setEditable(false);
+        sportTxt.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        sportTxt.setForeground(new java.awt.Color(153, 0, 153));
+        sportTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sportTxtActionPerformed(evt);
+            }
+        });
 
-        txtLoc.setEditable(false);
-        txtLoc.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
-        txtLoc.setForeground(new java.awt.Color(153, 0, 153));
+        positionTxt.setEditable(false);
+        positionTxt.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        positionTxt.setForeground(new java.awt.Color(153, 0, 153));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
-        jLabel2.setText("Subject");
+        labelSport.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        labelSport.setText("Sport");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
-        jLabel3.setText("Description");
+        labelCountry.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        labelCountry.setText("Country");
+
+        labelAge.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        labelAge.setText("Age");
+
+        ageTxt.setEditable(false);
+        ageTxt.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        ageTxt.setForeground(new java.awt.Color(153, 0, 153));
+
+        labelName.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        labelName.setText("Name");
+
+        nameTxt.setEditable(false);
+        nameTxt.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
+        nameTxt.setForeground(new java.awt.Color(153, 0, 153));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSubject)
-                    .addComponent(txtLoc)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(labelAge, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(ageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelSport, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(sportTxt)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE))
+                                .addComponent(positionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
-                .addContainerGap())
+                    .addComponent(labelSport, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sportTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(positionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelCountry, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAge, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setOpaque(false);
 
         jPanel3.setOpaque(false);
 
-        btnPolice.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPolice.setText("Police Department");
-        btnPolice.addActionListener(new java.awt.event.ActionListener() {
+        btnCoach.setText("Coach Department");
+        btnCoach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPoliceActionPerformed(evt);
+                btnCoachActionPerformed(evt);
             }
         });
 
-        btnHealth.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnHealth.setText("Health Department");
         btnHealth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,11 +300,17 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnFire.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnFire.setText("Fire Department");
-        btnFire.addActionListener(new java.awt.event.ActionListener() {
+        btnSelector.setText("Selection Department");
+        btnSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFireActionPerformed(evt);
+                btnSelectorActionPerformed(evt);
+            }
+        });
+
+        btnScheduler.setText("Scheduling Department");
+        btnScheduler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSchedulerActionPerformed(evt);
             }
         });
 
@@ -271,33 +318,33 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPolice, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFire, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnPolice, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(btnHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(btnFire, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCoach, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnScheduler, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        btnNGO.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnNGO.setText("NGO");
-        btnNGO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNGOActionPerformed(evt);
-            }
-        });
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCoach, btnHealth, btnScheduler, btnSelector});
+
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnCoach, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(btnHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnScheduler, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCoach, btnHealth, btnScheduler, btnSelector});
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -305,21 +352,12 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btnNGO, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnNGO, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -330,19 +368,18 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(250, 250, 250)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1392, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnAssignTo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
+                            .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAssignTo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,17 +387,20 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnAssignTo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAssignTo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 80, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     //assign the request to me
@@ -371,7 +411,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 6);
             
             if(cswr.getStatus().equalsIgnoreCase("Requested")){
 
@@ -395,11 +435,17 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         } else {
             
             
-            PlayerWorkRequest p = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest p = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 6);
             
-            txtSubject.setText(p.getSubject());
-            txtDesc.setText(p.getDescription());
-            txtLoc.setText(p.getLocation());
+            sportTxt.setText(p.getSubject());
+            countryTxt.setText(p.getCountry());
+            positionTxt.setText(p.getPosition());
+            ageTxt.setText(String.valueOf(p.getAge()));
+            for (WorkRequest work : system.getOrgWorkQueue().getWorkRequestList()){
+           if(work instanceof PlayerWorkRequest){
+            nameTxt.setText(work.getSender().getEmployee().getPersonName());
+           }
+        }
         }
     }//GEN-LAST:event_btnViewActionPerformed
     //complete the assigned request
@@ -410,7 +456,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            PlayerWorkRequest p = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest p = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 6);
            
             if(p.getStatus().equalsIgnoreCase("Pending")){
 
@@ -426,43 +472,50 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCompleteActionPerformed
     //assign request to NGO
-    private void btnNGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNGOActionPerformed
+    private void btnSchedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSchedulerActionPerformed
         // TODO add your handling code here:
          int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the NGO", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to Scheduler ", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             
 
-            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 6);
+            
+            if(cswr.getStatus().equals("Assigned To Scheduler")){
+                JOptionPane.showMessageDialog(null, "This request is already assigned to Scheduler", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            else{
             if(cswr.getStatus().equalsIgnoreCase("Requested")){
-            cswr.setStatus("Assigned To NGO");
+            cswr.setStatus("Assigned To Scheduler");
             populateTableWorkQueue();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
             }
+            }
             
         }
-    }//GEN-LAST:event_btnNGOActionPerformed
+    }//GEN-LAST:event_btnSchedulerActionPerformed
     //assign request to healthcare
     private void btnHealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHealthActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Physician", "Warning", JOptionPane.WARNING_MESSAGE);
         } else{
             
-            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equals("Assigned To Doctor")){
-                JOptionPane.showMessageDialog(null, "This request is already assigned to Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 6);
+            if(cswr.getStatus().equals("Assigned To Physician")){
+                JOptionPane.showMessageDialog(null, "This request is already assigned to Physician", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             
             else{
                 
-            if(cswr.getStatus().equalsIgnoreCase("Requested")){
-            JOptionPane.showMessageDialog(null, "Assigned to the Doctor");
-            cswr.setStatus("Assigned To Doctor");
+            if(cswr.getStatus().equalsIgnoreCase("Health check required")){
+                JOptionPane.showMessageDialog(null, "Assigned To Physician");
+                cswr.setStatus("Assigned To Physician");
 
             populateTableWorkQueue();
             }
@@ -473,20 +526,20 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnHealthActionPerformed
     //assign request to police
-    private void btnPoliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliceActionPerformed
+    private void btnCoachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoachActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to Coach", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equals("Assigned to the Police")){
-                JOptionPane.showMessageDialog(null, "This request is already assigned to Police", "Warning", JOptionPane.WARNING_MESSAGE);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 6);
+            if(cswr.getStatus().equals("Assigned To Coach")){
+                JOptionPane.showMessageDialog(null, "This request is already assigned to Coach", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else{
-               if(cswr.getStatus().equalsIgnoreCase("Requested")){ 
-            JOptionPane.showMessageDialog(null, "Assigned to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
-            cswr.setStatus("Assigned To Police");
+               if(cswr.getStatus().equalsIgnoreCase("Health check passed")){ 
+            JOptionPane.showMessageDialog(null, "Assigned To Coach", "Warning", JOptionPane.WARNING_MESSAGE);
+            cswr.setStatus("Assigned To Coach");
             populateTableWorkQueue();
             }
                else{
@@ -495,23 +548,23 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             }
             
         }
-    }//GEN-LAST:event_btnPoliceActionPerformed
+    }//GEN-LAST:event_btnCoachActionPerformed
     //assign request to fire department
-    private void btnFireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFireActionPerformed
+    private void btnSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectorActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblEvent.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose the row to forward request to Selector", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equals("Assigned to the FireMan")){
-                JOptionPane.showMessageDialog(null, "This request is already assigned to FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 6);
+            if(cswr.getStatus().equals("Assigned to Selector")){
+                JOptionPane.showMessageDialog(null, "This request is already assigned Selector", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else{
                 if(cswr.getStatus().equalsIgnoreCase("Requested")){ 
                    
-                JOptionPane.showMessageDialog(null, "Assigned to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
-                cswr.setStatus("Assigned To FireMan");
+                JOptionPane.showMessageDialog(null, "Assigned to Selector", "Warning", JOptionPane.WARNING_MESSAGE);
+                cswr.setStatus("Assigned to Selector");
                 populateTableWorkQueue();
             }
                 else{
@@ -519,30 +572,38 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                 }
             }
         }
-    }//GEN-LAST:event_btnFireActionPerformed
+    }//GEN-LAST:event_btnSelectorActionPerformed
+
+    private void sportTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sportTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sportTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ageTxt;
     private javax.swing.JButton btnAssignTo;
+    private javax.swing.JButton btnCoach;
     private javax.swing.JButton btnComplete;
-    private javax.swing.JButton btnFire;
     private javax.swing.JButton btnHealth;
-    private javax.swing.JButton btnNGO;
-    private javax.swing.JButton btnPolice;
+    private javax.swing.JButton btnScheduler;
+    private javax.swing.JButton btnSelector;
     private javax.swing.JButton btnView;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextArea countryTxt;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelAge;
+    private javax.swing.JLabel labelCountry;
+    private javax.swing.JLabel labelName;
+    private javax.swing.JLabel labelPosition;
+    private javax.swing.JLabel labelSport;
+    private javax.swing.JLabel lblT;
+    private javax.swing.JTextField nameTxt;
+    private javax.swing.JTextField positionTxt;
+    private javax.swing.JTextField sportTxt;
     private javax.swing.JTable tblEvent;
-    private javax.swing.JTextArea txtDesc;
-    private javax.swing.JTextField txtLoc;
-    private javax.swing.JTextField txtSubject;
     // End of variables declaration//GEN-END:variables
 }
