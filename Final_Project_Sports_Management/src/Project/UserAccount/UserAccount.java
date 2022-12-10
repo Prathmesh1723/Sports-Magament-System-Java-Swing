@@ -11,7 +11,7 @@ import Project.WorkQueue.WorkRequestQueue;
 
 /**
  *
- * @author vedant
+ * @author prath
  */
 public class UserAccount {
     private String username;
