@@ -6,36 +6,35 @@
 package Project.Organization;
 
 import Project.Role.Role;
-import Project.Role.VolunteerRole;
-import Project.Volunteer.VolunteerDirectory;
+import Project.Role.CustomerRole;
+import Project.Customer.CustomerDirectory;
 import java.util.HashSet;
 
 /**
- @author vidis
+ @author prath
  */
+public class CustomerOrganization extends Organization{
 
-public class VolunteerOrganization extends Organization{
-
-	VolunteerDirectory volunteerList;
+	CustomerDirectory volunteerList;
 
 	//constructor to add volunteer list to volunteer directory
-    public VolunteerOrganization(String name) {
-        super(Organization.Type.Volunteer.getValue());
-        volunteerList= new VolunteerDirectory();
+    public CustomerOrganization(String name) {
+        super(Organization.Type.Customer.getValue());
+        volunteerList= new CustomerDirectory();
     }
 
-    public VolunteerDirectory getVolunteerList() {
+    public CustomerDirectory getVolunteerList() {
         return volunteerList;
     }
 
-    public void setVolunteerList(VolunteerDirectory volunteerList) {
+    public void setVolunteerList(CustomerDirectory volunteerList) {
         this.volunteerList = volunteerList;
     }
 
     //hashmap to support volunteer role
     @Override
     public HashSet<Role> getSupportedRole(){
-        role.add(new VolunteerRole());
+        role.add(new CustomerRole());
        return role;
     }
 }

@@ -5,37 +5,37 @@
  */
 package Project.Organization;
 
-import Project.Tournament.TournamentDirectory;
+import Project.Coach.CoachDirectory;
 import Project.Role.CoachRole;
 import Project.Role.Role;
 import java.util.HashSet;
 
 /**
  *
- * @author vidis
+ * @author prath
  */
 public class CoachOrganization extends Organization{
-    TournamentDirectory doctorList;
-    //constructor to add doctor list to hospital directory
-    public CoachOrganization()
+    CoachDirectory policeList;
+    //constructor to add police list to police directory
+    public CoachOrganization(String name)
     {
-        super(Organization.Type.Doctor.getValue());
-        doctorList= new TournamentDirectory();
+        super(Organization.Type.Coach.getValue());
+        policeList=new CoachDirectory();
     }
 
-    public TournamentDirectory getHospitallist() {
-        return doctorList;
+
+    public CoachDirectory getPoliceList() {
+        return policeList;
     }
 
-    public void setHospitallist(TournamentDirectory doctorList) {
-        this.doctorList = doctorList;
+    public void setPoliceList(CoachDirectory policelist) {
+        this.policeList = policelist;
     }
-    
-    //hashmap to support doctor role
+    //hasmap to support police role
     @Override
     public HashSet<Role> getSupportedRole(){
-        role.add(new CoachRole());
+       role.add(new CoachRole());
        return role;
-    }
-    
+       
+    } 
 }
