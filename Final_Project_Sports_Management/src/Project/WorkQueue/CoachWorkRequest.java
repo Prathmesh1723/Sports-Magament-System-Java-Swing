@@ -7,14 +7,14 @@ package Project.WorkQueue;
 
 /**
  *
- * @author vedant
+ * @author prath
  */
-public class PoliceWorkRequest extends WorkRequest{
+public class CoachWorkRequest extends WorkRequest{
     private String description;
     private boolean add;
     private String location;
     
-    public PoliceWorkRequest() {
+    public CoachWorkRequest() {
         
         add = false;
         

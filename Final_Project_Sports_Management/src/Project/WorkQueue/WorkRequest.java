@@ -6,19 +6,19 @@
 package Project.WorkQueue;
 
 import Project.EventMaker.EventMaker;
-import Project.Scheduler.Scheduler;
-import Project.Player.Player;
 import Project.Selector.Selector;
-import Project.Provider.SportsP;
+import Project.Scheduler.Scheduler;
+import Project.Coach.Coach;
+import Project.Provider.Item;
 import Project.Provider.Provider;
 import Project.UserAccount.UserAccount;
-import Project.PlayerStat.PlayerStat;
-import Project.Volunteer.Volunteer;
+import Project.Player.Player;
+import Project.Customer.Customer;
 import java.util.Date;
 
 /**
  *
- * @author vedant
+ * @author prath
  */
 public abstract class WorkRequest {
     private String subject;
@@ -28,19 +28,19 @@ public abstract class WorkRequest {
     private Date requestDate;
     private Date resolveDate;
     private EventMaker eventMaker;
-    private PlayerStat changeSeeker;
-    private Player ngo;
+    private Player changeSeeker;
+    private Scheduler ngo;
     private Provider provider;
-    private SportsP item;
-    private Volunteer volunteer;
-    private Selector police;
-    private Scheduler fireMan;
+    private Item item;
+    private Customer volunteer;
+    private Coach police;
+    private Selector fireMan;
 
-    public Scheduler getFireMan() {
+    public Selector getFireMan() {
         return fireMan;
     }
 
-    public void setFireMan(Scheduler fireman) {
+    public void setFireMan(Selector fireman) {
         this.fireMan = fireman;
     }
     
@@ -48,28 +48,28 @@ public abstract class WorkRequest {
         requestDate = new Date();
     }
     
-    public Selector getPolice() {
+    public Coach getPolice() {
         return police;
     }
 
-    public void setPolice(Selector police) {
+    public void setPolice(Coach police) {
         this.police = police;
     }
 
-    public Volunteer getVolunteer() {
+    public Customer getVolunteer() {
         return volunteer;
     }
 
-    public void setVolunteer(Volunteer volunteer) {
+    public void setVolunteer(Customer volunteer) {
         this.volunteer = volunteer;
     }
 
     
-    public SportsP getItem() {
+    public Item getItem() {
         return item;
     }
 
-    public void setItem(SportsP item) {
+    public void setItem(Item item) {
         this.item = item;
     }
 
@@ -139,19 +139,19 @@ public abstract class WorkRequest {
         this.eventMaker = eventMaker;
     }
 
-    public PlayerStat getChangeSeeker() {
+    public Player getChangeSeeker() {
         return changeSeeker;
     }
 
-    public void setChangeSeeker(PlayerStat changeSeeker) {
+    public void setChangeSeeker(Player changeSeeker) {
         this.changeSeeker = changeSeeker;
     }
 
-    public Player getNgo() {
+    public Scheduler getNgo() {
         return ngo;
     }
 
-    public void setNgo(Player ngo) {
+    public void setNgo(Scheduler ngo) {
         this.ngo = ngo;
     }
 

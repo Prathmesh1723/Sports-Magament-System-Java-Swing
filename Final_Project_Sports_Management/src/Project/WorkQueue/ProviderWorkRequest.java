@@ -7,15 +7,15 @@ package Project.WorkQueue;
 
 /**
  *
- * @author vedant
+ * @@author prath
  */
-public class TournmtWorkRequest extends WorkRequest{
+public class ProviderWorkRequest extends WorkRequest{
     private int quantity;
     private boolean add;
     private String rtype;
     private String req;
 
-      public TournmtWorkRequest() {
+      public ProviderWorkRequest() {
        
         add = false;
        

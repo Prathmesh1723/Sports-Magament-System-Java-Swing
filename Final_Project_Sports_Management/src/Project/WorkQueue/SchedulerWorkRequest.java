@@ -7,7 +7,7 @@ package Project.WorkQueue;
 
 /**
  *
- * @author vedant
+ * @author prath
  */
 public class SchedulerWorkRequest extends WorkRequest{
     private String title;
