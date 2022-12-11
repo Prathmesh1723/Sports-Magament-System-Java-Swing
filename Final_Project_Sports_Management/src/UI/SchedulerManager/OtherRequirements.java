@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.VolunteerManager;
+package UI.SchedulerManager;
 
 import Project.MainSystem;
 import Project.Enterprise.Enterprise;
 import Project.Organization.Organization;
 import Project.Provider.Provider;
 import Project.UserAccount.UserAccount;
-import Project.WorkQueue.TournmtWorkRequest;
+import Project.WorkQueue.ProviderWorkRequest;
 import Project.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -26,9 +26,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author vedant
+ * @author prath
  */
-public class StaffRequest extends javax.swing.JPanel {
+public class OtherRequirements extends javax.swing.JPanel {
 
     /**
      * Creates new form EventMakerWorkArea
@@ -40,7 +40,7 @@ public class StaffRequest extends javax.swing.JPanel {
     private MainSystem system;
     private Provider p;
     
-    public StaffRequest(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,MainSystem system) {
+    public OtherRequirements(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,MainSystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
@@ -59,11 +59,11 @@ public class StaffRequest extends javax.swing.JPanel {
         
        
         for (WorkRequest work : organization.getOrgWorkQueue().getWorkRequestList()){
-           if(work instanceof TournmtWorkRequest){ 
+           if(work instanceof ProviderWorkRequest){ 
             Object[] row = new Object[10];
-            row[0] = ((TournmtWorkRequest) work).getRtype();
-            row[1] = ((TournmtWorkRequest) work).getReq();
-            row[2] = ((TournmtWorkRequest) work).getQuantity();
+            row[0] = ((ProviderWorkRequest) work).getRtype();
+            row[1] = ((ProviderWorkRequest) work).getReq();
+            row[2] = ((ProviderWorkRequest) work).getQuantity();
             row[3] = work;
             row[4] = work.getSender();
             
@@ -93,7 +93,6 @@ public class StaffRequest extends javax.swing.JPanel {
         txtQnt = new javax.swing.JTextField();
         comboType = new javax.swing.JComboBox();
         btnSubmit = new javax.swing.JButton();
-        btnBarChart = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(243, 235, 255));
@@ -103,7 +102,7 @@ public class StaffRequest extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Supply Request");
+        jLabel1.setText("Other Requirements");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,7 +162,7 @@ public class StaffRequest extends javax.swing.JPanel {
             }
         });
 
-        comboType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Food", "Clothes", "Medicine", "Education" }));
+        comboType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Food Providers", "Sponsers", "Security personnel", "Volunteers" }));
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +178,7 @@ public class StaffRequest extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(167, 167, 167)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,14 +189,14 @@ public class StaffRequest extends javax.swing.JPanel {
                             .addComponent(txtReq, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtQnt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
+                        .addGap(330, 330, 330)
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboType, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,19 +208,10 @@ public class StaffRequest extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtQnt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(52, 52, 52)
                 .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
         );
-
-        btnBarChart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/VolunteerManager/research (1).png"))); // NOI18N
-        btnBarChart.setBorderPainted(false);
-        btnBarChart.setContentAreaFilled(false);
-        btnBarChart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBarChartActionPerformed(evt);
-            }
-        });
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/CommunityEnterprise/back.png"))); // NOI18N
         btnBack.setBorderPainted(false);
@@ -239,14 +229,14 @@ public class StaffRequest extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(164, 164, 164)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBarChart, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(334, 334, 334)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,16 +245,14 @@ public class StaffRequest extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBarChart)
-                            .addComponent(btnBack))))
-                .addContainerGap(156, Short.MAX_VALUE))
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     //submit the item request
@@ -280,7 +268,7 @@ public class StaffRequest extends javax.swing.JPanel {
             return;
         }
         
-        TournmtWorkRequest rqst = new TournmtWorkRequest();
+        ProviderWorkRequest rqst = new ProviderWorkRequest();
         
         rqst.setRtype(rType);
         rqst.setReq(req);
@@ -302,47 +290,8 @@ public class StaffRequest extends javax.swing.JPanel {
         
 
     }//GEN-LAST:event_btnSubmitActionPerformed
-    //analysis of suuplies
-    private void btnBarChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarChartActionPerformed
-        // TODO add your handling code here:
-//        DefaultCategoryDataset d = new DefaultCategoryDataset();
-//        
-//        int b=0;
-//        int c=0;
-//        int m=0;
-//        int n=0;
-//        for (WorkRequest work : organization.getOrgWorkQueue().getWorkRequestList()){
-//           if(work instanceof ProviderWorkRequest)
-//           {
-//              
-//              if(((ProviderWorkRequest) work).getRtype().equals("Food")){
-//                  b=b+((ProviderWorkRequest) work).getQuantity();
-//              }
-//              if(((ProviderWorkRequest) work).getRtype().equals("Clothes")){
-//                  c=c+((ProviderWorkRequest) work).getQuantity();
-//              }
-//              if(((ProviderWorkRequest) work).getRtype().equals("Medicine")){
-//                  m=m+((ProviderWorkRequest) work).getQuantity();
-//              }
-//              if(((ProviderWorkRequest) work).getRtype().equals("Education")){
-//                  n=n+((ProviderWorkRequest) work).getQuantity();
-//              }
-//           }
-//        }
-//           d.setValue(b, "Request Type","Food");
-//           d.setValue(c, "Request Type","Clothes");
-//           d.setValue(m, "Request Type","Medicine");
-//           d.setValue(n, "Request Type","Education"); 
-//           
-//           
-//           JFreeChart chart = ChartFactory.createBarChart("Request Fulfilled", "Request Type", "type", d, PlotOrientation.VERTICAL, false, true, false);
-//           CategoryPlot p = chart.getCategoryPlot();
-//           p.setRangeGridlinePaint(Color.black);
-//           ChartFrame f = new ChartFrame("Request Analysis",chart);
-//           f.setVisible(true);
-//           f.setSize(500,400);
-    }//GEN-LAST:event_btnBarChartActionPerformed
-    //go to pervious page
+
+   //go to pervious page
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -377,7 +326,6 @@ public class StaffRequest extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnBarChart;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox comboType;
     private javax.swing.JLabel jLabel1;
