@@ -35,19 +35,19 @@ private ArrayList<Enterprise> enterpriseList;
             enterpriseList.add(enterprise);
         }
          else if(type == Enterprise.EnterpriseType.NGO){
-            enterprise= new NGOEnterprise(enterpriseName);
+            enterprise= new BadmintonEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
          }
             else if(type == Enterprise.EnterpriseType.Police){
-            enterprise= new PoliceEnterprise(enterpriseName);
+            enterprise= new TennisEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
          }
             else if(type == Enterprise.EnterpriseType.Hospital){
-            enterprise= new HospitalEnterprise(enterpriseName);
+            enterprise= new CricketEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
          } 
             else if(type == Enterprise.EnterpriseType.FireMan){
-            enterprise= new FireManEnterprise(enterpriseName);
+            enterprise= new FootballEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
          }
         return enterprise;

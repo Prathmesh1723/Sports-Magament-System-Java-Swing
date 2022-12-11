@@ -11,7 +11,7 @@ import Project.EventMaker.EventMaker;
 import Project.Organization.EventMakerOrganization;
 import Project.Organization.Organization;
 import Project.UserAccount.UserAccount;
-import Project.WorkQueue.VictimWorkRequest;
+import Project.WorkQueue.PlayerWorkRequest;
 import Project.WorkQueue.WorkRequestQueue;
 import Project.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
@@ -61,12 +61,12 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for (WorkRequest work : system.getOrgWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){ 
+           if(work instanceof PlayerWorkRequest){ 
             Object[] row = new Object[10];
             row[0] = work.getSender().getEmployee().getPersonName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkRequest) work).getDescription();
-            row[3] = ((VictimWorkRequest) work).getLocation();
+            row[2] = ((PlayerWorkRequest) work).getDescription();
+            row[3] = ((PlayerWorkRequest) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -371,7 +371,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             
             if(cswr.getStatus().equalsIgnoreCase("Requested")){
 
@@ -395,7 +395,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         } else {
             
             
-            VictimWorkRequest p = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest p = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             
             txtSubject.setText(p.getSubject());
             txtDesc.setText(p.getDescription());
@@ -410,7 +410,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest p = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest p = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
            
             if(p.getStatus().equalsIgnoreCase("Pending")){
 
@@ -434,7 +434,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         } else {
             
 
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equalsIgnoreCase("Requested")){
             cswr.setStatus("Assigned To NGO");
             populateTableWorkQueue();
@@ -453,7 +453,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
         } else{
             
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned To Doctor")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
             }
@@ -479,7 +479,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned to the Police")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to Police", "Warning", JOptionPane.WARNING_MESSAGE);
             }
@@ -503,7 +503,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            PlayerWorkRequest cswr = (PlayerWorkRequest) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned to the FireMan")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
             }

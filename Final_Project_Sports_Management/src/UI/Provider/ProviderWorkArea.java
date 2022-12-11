@@ -10,10 +10,10 @@ import Project.MainSystem;
 import Project.Enterprise.Enterprise;
 import Project.Organization.Organization;
 import Project.Organization.ProviderOrganization;
-import Project.Provider.Item;
+import Project.Provider.SportsP;
 import Project.Provider.Provider;
 import Project.UserAccount.UserAccount;
-import Project.WorkQueue.ProviderWorkRequest;
+import Project.WorkQueue.TournmtWorkRequest;
 import Project.WorkQueue.WorkRequestQueue;
 import Project.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
@@ -66,11 +66,11 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         
         
         for (WorkRequest work : system.getOrgWorkQueue().getWorkRequestList()){
-           if(work instanceof ProviderWorkRequest){ 
+           if(work instanceof TournmtWorkRequest){ 
             Object[] row = new Object[10];
-            row[0] = ((ProviderWorkRequest) work).getRtype();
-            row[1] = ((ProviderWorkRequest) work).getReq();
-            row[2] = ((ProviderWorkRequest) work).getQuantity();
+            row[0] = ((TournmtWorkRequest) work).getRtype();
+            row[1] = ((TournmtWorkRequest) work).getReq();
+            row[2] = ((TournmtWorkRequest) work).getQuantity();
             //row[3] = work;
             //row[4] = work.getSender();
            row[3] = work.getRequestDate();
@@ -87,7 +87,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) tblCreate.getModel();
         
             model.setRowCount(0);
-            for(Item item: p.getItemDirectory().getSupplyList()){
+            for(SportsP item: p.getItemDirectory().getSupplyList()){
             Object[] row = new Object[10];
             row[0] = item.getRequirementType();
             row[1] = item.getRequirement();
@@ -334,7 +334,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            ProviderWorkRequest nswr = (ProviderWorkRequest) tblProvideReq.getValueAt(selectedRow, 4);
+            TournmtWorkRequest nswr = (TournmtWorkRequest) tblProvideReq.getValueAt(selectedRow, 4);
 
             nswr.setStatus("Pending");
             nswr.setReciever(account);
@@ -354,7 +354,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            ProviderWorkRequest pwr = (ProviderWorkRequest) tblProvideReq.getValueAt(selectedRow, 4);
+            TournmtWorkRequest pwr = (TournmtWorkRequest) tblProvideReq.getValueAt(selectedRow, 4);
             if (pwr.getReciever() != null) {
                 if (pwr.getStatus().equals("Pending")) {
                     UserAccount a = pwr.getSender();
@@ -363,7 +363,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(null, "No Stock available. Request from Provider");
                         return;
                     }
-                    for (Item item : p.getItemDirectory().getSupplyList()) {
+                    for (SportsP item : p.getItemDirectory().getSupplyList()) {
                        
                         if (pwr.getReq().equals(item.getRequirement())&& pwr.getRtype().equals(item.getRequirementType())) {
                             
@@ -409,7 +409,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         }
 
        
-        Item item = p.getItemDirectory().addItem();
+        SportsP item = p.getItemDirectory().addItem();
         
         item.setRequirementType(type);
         item.setRequirement(req);

@@ -14,8 +14,8 @@ import Project.Organization.Organization;
 import Project.Organization.VolunteerOrganization;
 import Project.UserAccount.UserAccount;
 import Project.Volunteer.Volunteer;
-import Project.WorkQueue.NGOWorkRequest;
-import Project.WorkQueue.VictimWorkRequest;
+import Project.WorkQueue.SchedulerWorkRequest;
+import Project.WorkQueue.PlayerWorkRequest;
 import Project.WorkQueue.WorkRequestQueue;
 import Project.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -74,14 +74,14 @@ public class DashboardVolunteer extends javax.swing.JPanel {
         
         
         for (WorkRequest work : system.getOrgWorkQueue().getWorkRequestList()){
-           if(work instanceof NGOWorkRequest){ 
+           if(work instanceof SchedulerWorkRequest){ 
             Object[] row = new Object[10];
             row[0] = work;
-            row[1] = ((NGOWorkRequest) work).getDescription();
+            row[1] = ((SchedulerWorkRequest) work).getDescription();
             row[2] =  work.getRequestDate();
-            row[3] = ((NGOWorkRequest) work).getLocation();
-            row[4] = ((NGOWorkRequest) work).getvRequired();
-            row[5] =  ((NGOWorkRequest) work).getvAcquired();
+            row[3] = ((SchedulerWorkRequest) work).getLocation();
+            row[4] = ((SchedulerWorkRequest) work).getvRequired();
+            row[5] =  ((SchedulerWorkRequest) work).getvAcquired();
             
             model.addRow(row);
            }
@@ -305,7 +305,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-        NGOWorkRequest p = (NGOWorkRequest) tblEventNGO.getValueAt(selectedRow, 0);
+        SchedulerWorkRequest p = (SchedulerWorkRequest) tblEventNGO.getValueAt(selectedRow, 0);
       
         p.setvRequired(p.getvRequired()-1);
         p.setvAcquired(p.getvAcquired()+1);
@@ -326,7 +326,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            NGOWorkRequest p = (NGOWorkRequest) tblEventNGO.getValueAt(selectedRow, 0);
+            SchedulerWorkRequest p = (SchedulerWorkRequest) tblEventNGO.getValueAt(selectedRow, 0);
             txtTitle.setText(p.getTitle());
             txtDesc.setText(p.getDescription());
             txtLoc.setText(p.getLocation());

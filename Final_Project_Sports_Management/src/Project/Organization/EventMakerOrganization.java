@@ -6,7 +6,7 @@
 package Project.Organization;
 
 import Project.EventMaker.EventMakerDirectory;
-import Project.Role.EventMakerRole;
+import Project.Role.TournamentEventRole;
 import Project.Role.Role;
 import java.util.HashSet;
 
@@ -35,7 +35,7 @@ public class EventMakerOrganization extends Organization {
     //hash map to support event maker role
     @Override
     public HashSet<Role> getSupportedRole(){
-       role.add(new EventMakerRole());
+       role.add(new TournamentEventRole());
        return role;
        
     }

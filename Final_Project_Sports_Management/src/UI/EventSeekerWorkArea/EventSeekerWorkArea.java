@@ -11,7 +11,7 @@ import Project.Enterprise.Enterprise;
 import Project.EventMaker.EventMaker;
 import Project.Organization.Organization;
 import Project.UserAccount.UserAccount;
-import Project.WorkQueue.VictimWorkRequest;
+import Project.WorkQueue.PlayerWorkRequest;
 import Project.WorkQueue.WorkRequest;
 //import googlemaps.GoogleMapsViewer;
 import java.awt.event.WindowAdapter;
@@ -57,12 +57,12 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
         
         
         for (WorkRequest work : organization.getOrgWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){ 
+           if(work instanceof PlayerWorkRequest){ 
             Object[] row = new Object[10];
             row[0] = work.getSender().getEmployee().getPersonName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkRequest) work).getDescription();
-            row[3] = ((VictimWorkRequest) work).getLocation();
+            row[2] = ((PlayerWorkRequest) work).getDescription();
+            row[3] = ((PlayerWorkRequest) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -261,7 +261,7 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
             return;
         }
         
-        VictimWorkRequest req = new VictimWorkRequest();
+        PlayerWorkRequest req = new PlayerWorkRequest();
         req.setSubject(subject);
         req.setDescription(desp);
         req.setLocation(location);

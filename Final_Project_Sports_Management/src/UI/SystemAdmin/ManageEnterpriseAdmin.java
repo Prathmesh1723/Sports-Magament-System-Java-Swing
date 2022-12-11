@@ -11,10 +11,10 @@ import Project.Person.Person;
 import Project.Enterprise.Enterprise;
 import Project.Network.Network;
 import Project.Role.CommunityAdminRole;
-import Project.Role.DoctorAdminRole;
-import Project.Role.FireManAdminRole;
-import Project.Role.NGOAdminRole;
-import Project.Role.PoliceAdminRole;
+import Project.Role.CoachAdminRole;
+import Project.Role.PlayerAdminRole;
+import Project.Role.ScheduleAdminRole;
+import Project.Role.PlayerStatAdminRole;
 import Project.Role.ProviderAdminRole;
 import Project.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -348,16 +348,16 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Community) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password,person, new CommunityAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new NGOAdminRole());
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new ScheduleAdminRole());
             
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Provider) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new ProviderAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Police) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new PoliceAdminRole());
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new PlayerStatAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new DoctorAdminRole());
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new CoachAdminRole());
             }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.FireMan) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new FireManAdminRole());
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new PlayerAdminRole());
             }
 
             populateTableEnterpriseAdmin();

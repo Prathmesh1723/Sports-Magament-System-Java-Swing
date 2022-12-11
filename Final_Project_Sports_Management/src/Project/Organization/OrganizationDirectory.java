@@ -34,12 +34,12 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
         else if (orgType.getValue().equals(Organization.Type.Victim.getValue())){
-            organization = new VictimOrganization();
+            organization = new PlayerOrganization();
             organization.setOrganizationName(orgName);
             organizationList.add(organization);
         }
         else if (orgType.getValue().equals(Organization.Type.NGO.getValue())){
-            organization = new NGOOrganization();
+            organization = new TournamentOrganization();
             organization.setOrganizationName(orgName);
             organizationList.add(organization);
         }
@@ -54,17 +54,17 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
         else if (orgType.getValue().equals(Organization.Type.Police.getValue())){
-            organization = new PoliceOrganization(orgName);
+            organization = new SchedulerOrganization(orgName);
             organization.setOrganizationName(orgName);
             organizationList.add(organization);
         }
         else if (orgType.getValue().equals(Organization.Type.Doctor.getValue())){
-            organization = new DoctorOrganization();
+            organization = new CoachOrganization();
             organization.setOrganizationName(orgName);
             organizationList.add(organization);
         }
         else if (orgType.getValue().equals(Organization.Type.FireMan.getValue())){
-            organization = new FireManOrganization(orgName);
+            organization = new SelectorOrganization(orgName);
             organization.setOrganizationName(orgName);
             organizationList.add(organization);
         }

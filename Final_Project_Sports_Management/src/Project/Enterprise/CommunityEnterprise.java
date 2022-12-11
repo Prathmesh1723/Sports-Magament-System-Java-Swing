@@ -5,11 +5,11 @@
  */
 package Project.Enterprise;
 
-import Project.Role.EventMakerAdminRole;
+import Project.Role.TournmtEventAdminRole;
 import Project.Role.Role;
 import Project.Role.VolunteerAdminRole;
 import java.util.HashSet;
-import Project.Role.VictimAdminRole;
+import Project.Role.SelectorAdminRole;
 
 /**
  *
@@ -23,9 +23,9 @@ public class CommunityEnterprise extends Enterprise{
     @Override
     public HashSet<Role> getSupportedRole(){
        
-        role.add(new EventMakerAdminRole());
+        role.add(new TournmtEventAdminRole());
               
-        role.add(new VictimAdminRole());
+        role.add(new SelectorAdminRole());
         
         role.add(new VolunteerAdminRole());
        

@@ -16,30 +16,30 @@ public class Provider {
     private static int supplierCount=1;
     private String supplierId;
     private WorkRequestQueue supplierWorkQueue;
-    private ItemDirectory itemDirectory;
-    private Item item;
+    private SportsPDirectory itemDirectory;
+    private SportsP item;
     //provider class constructor to update ids, work queue and item directory
     public Provider() {
         
         supplierId = "SUP"+(++supplierCount);
         supplierWorkQueue= new WorkRequestQueue();
-        itemDirectory = new ItemDirectory();
-        item = new Item();
+        itemDirectory = new SportsPDirectory();
+        item = new SportsP();
     }
     
-    public Item getItem() {
+    public SportsP getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(SportsP item) {
         this.item = item;
     }
     
-    public ItemDirectory getItemDirectory() {
+    public SportsPDirectory getItemDirectory() {
         return itemDirectory;
     }
 
-    public void setItemDirectory(ItemDirectory itemDirectory) {
+    public void setItemDirectory(SportsPDirectory itemDirectory) {
         this.itemDirectory = itemDirectory;
     }
 

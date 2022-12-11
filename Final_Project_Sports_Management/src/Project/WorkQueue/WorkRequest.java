@@ -6,13 +6,13 @@
 package Project.WorkQueue;
 
 import Project.EventMaker.EventMaker;
-import Project.FireMan.FireMan;
-import Project.NGO.NGO;
-import Project.Police.Police;
-import Project.Provider.Item;
+import Project.Scheduler.Scheduler;
+import Project.Player.Player;
+import Project.Selector.Selector;
+import Project.Provider.SportsP;
 import Project.Provider.Provider;
 import Project.UserAccount.UserAccount;
-import Project.Victim.Victim;
+import Project.PlayerStat.PlayerStat;
 import Project.Volunteer.Volunteer;
 import java.util.Date;
 
@@ -28,19 +28,19 @@ public abstract class WorkRequest {
     private Date requestDate;
     private Date resolveDate;
     private EventMaker eventMaker;
-    private Victim changeSeeker;
-    private NGO ngo;
+    private PlayerStat changeSeeker;
+    private Player ngo;
     private Provider provider;
-    private Item item;
+    private SportsP item;
     private Volunteer volunteer;
-    private Police police;
-    private FireMan fireMan;
+    private Selector police;
+    private Scheduler fireMan;
 
-    public FireMan getFireMan() {
+    public Scheduler getFireMan() {
         return fireMan;
     }
 
-    public void setFireMan(FireMan fireman) {
+    public void setFireMan(Scheduler fireman) {
         this.fireMan = fireman;
     }
     
@@ -48,11 +48,11 @@ public abstract class WorkRequest {
         requestDate = new Date();
     }
     
-    public Police getPolice() {
+    public Selector getPolice() {
         return police;
     }
 
-    public void setPolice(Police police) {
+    public void setPolice(Selector police) {
         this.police = police;
     }
 
@@ -65,11 +65,11 @@ public abstract class WorkRequest {
     }
 
     
-    public Item getItem() {
+    public SportsP getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(SportsP item) {
         this.item = item;
     }
 
@@ -139,19 +139,19 @@ public abstract class WorkRequest {
         this.eventMaker = eventMaker;
     }
 
-    public Victim getChangeSeeker() {
+    public PlayerStat getChangeSeeker() {
         return changeSeeker;
     }
 
-    public void setChangeSeeker(Victim changeSeeker) {
+    public void setChangeSeeker(PlayerStat changeSeeker) {
         this.changeSeeker = changeSeeker;
     }
 
-    public NGO getNgo() {
+    public Player getNgo() {
         return ngo;
     }
 
-    public void setNgo(NGO ngo) {
+    public void setNgo(Player ngo) {
         this.ngo = ngo;
     }
 
