@@ -4,17 +4,32 @@
  * and open the template in the editor.
  */
 package UI.SystemAdmin;
-
-
+;
 import Project.MainSystem;
 import Project.Person.Person;
 import Project.Enterprise.Enterprise;
 import Project.Network.Network;
 import Project.Role.CommunityAdminRole;
+import Project.Role.PhysicianAdminRole;
+import Project.Role.SelectorAdminRole;
+import Project.Role.SchedulerAdminRole;
 import Project.Role.CoachAdminRole;
-import Project.Role.PlayerAdminRole;
-import Project.Role.ScheduleAdminRole;
-import Project.Role.PlayerStatAdminRole;
+import Project.Role.ProviderAdminRole;
+import Project.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import Project.MainSystem;
+import Project.Person.Person;
+import Project.Enterprise.Enterprise;
+import Project.Network.Network;
+import Project.Role.CommunityAdminRole;
+import Project.Role.PhysicianAdminRole;
+import Project.Role.SelectorAdminRole;
+import Project.Role.SchedulerAdminRole;
+import Project.Role.CoachAdminRole;
 import Project.Role.ProviderAdminRole;
 import Project.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -25,7 +40,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Prath
+ * @author vedant
  */
 public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
@@ -88,21 +103,21 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblT = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEnterprise = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
         txtAdmin = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl2 = new javax.swing.JLabel();
+        lbl3 = new javax.swing.JLabel();
         comboNetwork = new javax.swing.JComboBox();
         comboType = new javax.swing.JComboBox();
-        jLabel5 = new javax.swing.JLabel();
+        lbl4 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lbl5 = new javax.swing.JLabel();
         txtPasword = new javax.swing.JPasswordField();
         btnBack = new javax.swing.JButton();
 
@@ -110,21 +125,21 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Manage Enterprise Admin");
+        lblT.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblT.setForeground(new java.awt.Color(255, 255, 255));
+        lblT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblT.setText("Manage Enterprise Admin");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(lblT)
                 .addGap(0, 0, 0))
         );
 
@@ -134,7 +149,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Enterprise Name", "Network", "Username"
+                "Country", "Enterpirse", "Username"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -147,7 +162,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblEnterprise);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Manage", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Add User", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
         jPanel4.setOpaque(false);
 
         btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -166,19 +181,17 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setText("Network ");
+        lbl1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl1.setText("Enterprise ");
 
-        txtAdmin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtAdmin.setForeground(new java.awt.Color(153, 0, 153));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("Admin Name");
+        lbl2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl2.setText("Admin Name");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setText("Enterprise Type");
+        lbl3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl3.setText("Organisation Type");
 
-        comboNetwork.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         comboNetwork.setForeground(new java.awt.Color(153, 0, 153));
         comboNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,17 +199,15 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             }
         });
 
-        comboType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         comboType.setForeground(new java.awt.Color(153, 0, 153));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel5.setText("Username");
+        lbl4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl4.setText("Username");
 
-        txtUsername.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtUsername.setForeground(new java.awt.Color(153, 0, 153));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel6.setText("Password");
+        lbl5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl5.setText("Password");
 
         txtPasword.setForeground(new java.awt.Color(153, 0, 153));
 
@@ -207,12 +218,12 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,23 +239,23 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboType, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPasword, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -297,6 +308,8 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
                 .addGap(55, 55, 55))
         );
 
+        jPanel4.getAccessibleContext().setAccessibleName("Add User\n");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -347,17 +360,17 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             UserAccount account = null;
             if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Community) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password,person, new CommunityAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new ScheduleAdminRole());
+            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.scheduler) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new SchedulerAdminRole());
             
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Provider) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new ProviderAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Police) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new PlayerStatAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
+            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Coach) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new CoachAdminRole());
-            }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.FireMan) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new PlayerAdminRole());
+            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Physician) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new PhysicianAdminRole());
+            }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Selector) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, person, new SelectorAdminRole());
             }
 
             populateTableEnterpriseAdmin();
@@ -403,16 +416,16 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JComboBox comboNetwork;
     private javax.swing.JComboBox comboType;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lbl3;
+    private javax.swing.JLabel lbl4;
+    private javax.swing.JLabel lbl5;
+    private javax.swing.JLabel lblT;
     private javax.swing.JTable tblEnterprise;
     private javax.swing.JTextField txtAdmin;
     private javax.swing.JPasswordField txtPasword;

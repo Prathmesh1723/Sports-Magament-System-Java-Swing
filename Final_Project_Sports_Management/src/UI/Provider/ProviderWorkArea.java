@@ -10,10 +10,10 @@ import Project.MainSystem;
 import Project.Enterprise.Enterprise;
 import Project.Organization.Organization;
 import Project.Organization.ProviderOrganization;
-import Project.Provider.SportsP;
+import Project.Provider.Item;
 import Project.Provider.Provider;
 import Project.UserAccount.UserAccount;
-import Project.WorkQueue.TournmtWorkRequest;
+import Project.WorkQueue.ProviderWorkRequest;
 import Project.WorkQueue.WorkRequestQueue;
 import Project.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author vidis
+ * @author prath
  */
 public class ProviderWorkArea extends javax.swing.JPanel {
 
@@ -66,11 +66,11 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         
         
         for (WorkRequest work : system.getOrgWorkQueue().getWorkRequestList()){
-           if(work instanceof TournmtWorkRequest){ 
+           if(work instanceof ProviderWorkRequest){ 
             Object[] row = new Object[10];
-            row[0] = ((TournmtWorkRequest) work).getRtype();
-            row[1] = ((TournmtWorkRequest) work).getReq();
-            row[2] = ((TournmtWorkRequest) work).getQuantity();
+            row[0] = ((ProviderWorkRequest) work).getRtype();
+            row[1] = ((ProviderWorkRequest) work).getReq();
+            row[2] = ((ProviderWorkRequest) work).getQuantity();
             //row[3] = work;
             //row[4] = work.getSender();
            row[3] = work.getRequestDate();
@@ -87,7 +87,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) tblCreate.getModel();
         
             model.setRowCount(0);
-            for(SportsP item: p.getItemDirectory().getSupplyList()){
+            for(Item item: p.getItemDirectory().getSupplyList()){
             Object[] row = new Object[10];
             row[0] = item.getRequirementType();
             row[1] = item.getRequirement();
@@ -107,7 +107,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblT = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProvideReq = new javax.swing.JTable();
         btnComplete = new javax.swing.JButton();
@@ -120,7 +120,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         txtQuantity = new javax.swing.JTextField();
         btnCreate = new javax.swing.JButton();
         comboType = new javax.swing.JComboBox();
-        jLabel5 = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCreate = new javax.swing.JTable();
 
@@ -128,21 +128,21 @@ public class ProviderWorkArea extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Provider Work Area");
+        lblT.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblT.setForeground(new java.awt.Color(255, 255, 255));
+        lblT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblT.setText("Requirements Provider Work Area");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(lblT)
                 .addGap(0, 0, 0))
         );
 
@@ -218,6 +218,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         });
 
         comboType.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 13)); // NOI18N
+        comboType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Food Providers", "Sponsers", "Security personnel", "Volunteers", " " }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -261,8 +262,8 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel5.setText("Create Requirement");
+        lbl1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbl1.setText("Create Requirement");
 
         tblCreate.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -293,7 +294,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -319,7 +320,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -329,12 +330,12 @@ public class ProviderWorkArea extends javax.swing.JPanel {
     //assign the supplu to provider
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblProvideReq.getSelectedRow();
+         int selectedRow = tblProvideReq.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            TournmtWorkRequest nswr = (TournmtWorkRequest) tblProvideReq.getValueAt(selectedRow, 4);
+            ProviderWorkRequest nswr = (ProviderWorkRequest) tblProvideReq.getValueAt(selectedRow, 4);
 
             nswr.setStatus("Pending");
             nswr.setReciever(account);
@@ -354,7 +355,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            TournmtWorkRequest pwr = (TournmtWorkRequest) tblProvideReq.getValueAt(selectedRow, 4);
+            ProviderWorkRequest pwr = (ProviderWorkRequest) tblProvideReq.getValueAt(selectedRow, 4);
             if (pwr.getReciever() != null) {
                 if (pwr.getStatus().equals("Pending")) {
                     UserAccount a = pwr.getSender();
@@ -363,7 +364,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(null, "No Stock available. Request from Provider");
                         return;
                     }
-                    for (SportsP item : p.getItemDirectory().getSupplyList()) {
+                    for (Item item : p.getItemDirectory().getSupplyList()) {
                        
                         if (pwr.getReq().equals(item.getRequirement())&& pwr.getRtype().equals(item.getRequirementType())) {
                             
@@ -409,7 +410,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         }
 
        
-        SportsP item = p.getItemDirectory().addItem();
+        Item item = p.getItemDirectory().addItem();
         
         item.setRequirementType(type);
         item.setRequirement(req);
@@ -451,15 +452,15 @@ public class ProviderWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnComplete;
     private javax.swing.JButton btnCreate;
     private javax.swing.JComboBox comboType;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lblT;
     private javax.swing.JTable tblCreate;
     private javax.swing.JTable tblProvideReq;
     private javax.swing.JTextField txtQuantity;
