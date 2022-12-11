@@ -9,37 +9,37 @@ import Project.WorkQueue.WorkRequestQueue;
 
 /**
  *
- * @author vidis
+ * @author vedant
  */
 public class Provider {
     private String supplierName;
     private static int supplierCount=1;
     private String supplierId;
     private WorkRequestQueue supplierWorkQueue;
-    private SportsPDirectory itemDirectory;
-    private SportsP item;
+    private ItemDirectory itemDirectory;
+    private Item item;
     //provider class constructor to update ids, work queue and item directory
     public Provider() {
         
         supplierId = "SUP"+(++supplierCount);
         supplierWorkQueue= new WorkRequestQueue();
-        itemDirectory = new SportsPDirectory();
-        item = new SportsP();
+        itemDirectory = new ItemDirectory();
+        item = new Item();
     }
     
-    public SportsP getItem() {
+    public Item getItem() {
         return item;
     }
 
-    public void setItem(SportsP item) {
+    public void setItem(Item item) {
         this.item = item;
     }
     
-    public SportsPDirectory getItemDirectory() {
+    public ItemDirectory getItemDirectory() {
         return itemDirectory;
     }
 
-    public void setItemDirectory(SportsPDirectory itemDirectory) {
+    public void setItemDirectory(ItemDirectory itemDirectory) {
         this.itemDirectory = itemDirectory;
     }
 
