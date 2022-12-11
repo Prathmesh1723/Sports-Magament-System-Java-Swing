@@ -5,7 +5,6 @@
  */
 package UI.SystemAdmin;
 
-import googlemaps.SystemAdminWorkArea;
 import Project.MainSystem;
 import Project.Enterprise.Enterprise;
 import Project.Network.Network;

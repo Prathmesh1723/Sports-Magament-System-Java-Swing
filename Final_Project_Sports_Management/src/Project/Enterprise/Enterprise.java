@@ -1,37 +1,37 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Project.Enterprise;
-
 
 import Project.Organization.Organization;
 import Project.Organization.OrganizationDirectory;
 
-
 /**
  *
- * @author vidis
- */ 
-
-public abstract class Enterprise extends Organization{
+ * @author vedant
+ */
+public abstract class Enterprise extends Organization {
+    
     private EnterpriseType enterpriseType;
-    private OrgDirectory orgDirectory;
-
-
-public Enterprise(String enterpriseName, EnterpriseType type)
+    private OrganizationDirectory organizationDirectory;
+    
+    public Enterprise(String enterpriseName, EnterpriseType type)
     {
       super(enterpriseName);
       this.enterpriseType= type;
-      orgDirectory = new OrgDirectory();
+      organizationDirectory = new OrganizationDirectory();
     }
-
-public enum EnterpriseType
+    //enums for different types of enterprise
+     public enum EnterpriseType
      {
-        Football("Football"),
-        Cricket("Cricket"),
-        Tennis("Tennis"),
-        Badminton("Badminton");
+        Community("Community"),
+        NGO("NGO"),
+        Provider ("Provider"),
+        Police("Police"),
+        Hospital("Hospital"),
+        FireMan("FireMan");
         
         private String enterpriseTypeValue;
         
@@ -58,6 +58,5 @@ public enum EnterpriseType
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
+
 }
-
-

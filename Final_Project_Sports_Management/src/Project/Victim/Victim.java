@@ -9,7 +9,7 @@ import Project.WorkQueue.WorkRequestQueue;
 
 /**
  *
- * @author vidis
+ * @author vedant
  */
 public class Victim {
     private String victimName;

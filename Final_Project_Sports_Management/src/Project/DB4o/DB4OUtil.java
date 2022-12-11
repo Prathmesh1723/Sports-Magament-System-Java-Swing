@@ -4,7 +4,7 @@
  */
 package Project.DB4o;
 
-import Project.SysConfiguration;
+import Project.SystemConfiguration;
 import Project.MainSystem;
 import java.nio.file.Paths;
 import com.db4o.Db4oEmbedded;
@@ -15,7 +15,7 @@ import com.db4o.ta.TransparentPersistenceSupport;
 
 /**
  *
- * @author vedant
+ * @author prath
  */
 public class DB4OUtil {
     
@@ -68,7 +68,7 @@ public class DB4OUtil {
         System.out.println("Connection Successfull");
         MainSystem system;
         if (systems.size() == 0){
-            system = SysConfiguration.configureSystem(); 
+            system = SystemConfiguration.configureSystem(); 
         }
         else{
             system = systems.get(systems.size() - 1);

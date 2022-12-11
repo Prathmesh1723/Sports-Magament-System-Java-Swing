@@ -1,41 +1,41 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Project.Organization;
 
-import Project.Volunteer.VolunteerDirectory;
-import Project.Role.VolunteerRole;
 import Project.Role.Role;
+import Project.Role.VolunteerRole;
+import Project.Volunteer.VolunteerDirectory;
 import java.util.HashSet;
 
 /**
- *
- * @author vidis
+ @author vidis
  */
+
 public class VolunteerOrganization extends Organization{
-    
-    VolunteerDirectory volunteerList;
-    //constructor to add NGO list to NGO directory
-    public VolunteerOrganization()
-    {
+
+	VolunteerDirectory volunteerList;
+
+	//constructor to add volunteer list to volunteer directory
+    public VolunteerOrganization(String name) {
         super(Organization.Type.Volunteer.getValue());
-        volunteerList=new VolunteerDirectory();
+        volunteerList= new VolunteerDirectory();
     }
 
     public VolunteerDirectory getVolunteerList() {
         return volunteerList;
     }
 
-    public void setVolunteerList(VolunteerDirectory volunteerDirectory) {
+    public void setVolunteerList(VolunteerDirectory volunteerList) {
         this.volunteerList = volunteerList;
     }
-    //hashmap to support NGO role
+
+    //hashmap to support volunteer role
     @Override
     public HashSet<Role> getSupportedRole(){
-       role.add(new VolunteerManagerRole());
+        role.add(new VolunteerRole());
        return role;
-       
     }
-    
 }

@@ -9,7 +9,7 @@ import Project.WorkQueue.WorkRequestQueue;
 
 /**
  *
- * @author rajen
+ * @author vedant 
  */
 public class EventMaker {
     private String eventMakerName;

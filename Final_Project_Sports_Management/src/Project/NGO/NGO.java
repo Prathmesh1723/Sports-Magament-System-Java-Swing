@@ -7,7 +7,7 @@ package Project.NGO;
 
 /**
  *
- * @author rajen
+ * @author prath
  */
 public class NGO {
  

@@ -16,9 +16,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author vedant
+ * @author prath
  */
-public class MainSystem {
+public class MainSystem extends Organization{
     private static MainSystem mainSystem;
     private ArrayList<Network> networkList;
     

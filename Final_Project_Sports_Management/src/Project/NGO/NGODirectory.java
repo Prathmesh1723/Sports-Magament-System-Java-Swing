@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author rajen
+ * @author prath
  */
 public class NGODirectory {
     private ArrayList<NGO> ngodirectory;

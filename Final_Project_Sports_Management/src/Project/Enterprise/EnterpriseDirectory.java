@@ -1,20 +1,19 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Project.Enterprise;
-
 
 import java.util.ArrayList;
 
 /**
  *
- * @author vidis
+ * @author vedant
  */
-
 public class EnterpriseDirectory {
     
-    private ArrayList<Enterprise> enterpriseList;
+private ArrayList<Enterprise> enterpriseList;
     
     public EnterpriseDirectory()
     {
@@ -27,20 +26,28 @@ public class EnterpriseDirectory {
     //Create and add new enterprises
     public Enterprise createAndAddEnterprise(String enterpriseName, Enterprise.EnterpriseType type){
         Enterprise enterprise = null;
-        if(type == Enterprise.EnterpriseType.Football){
-            enterprise = new FootballEnterprise(enterpriseName);
+        if(type == Enterprise.EnterpriseType.Community){
+            enterprise = new CommunityEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
         }
-        else if(type == Enterprise.EnterpriseType.Cricket){
-            enterprise= new CricketEnterprise(enterpriseName);
+        else if(type == Enterprise.EnterpriseType.Provider){
+            enterprise= new ProviderEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
         }
-         else if(type == Enterprise.EnterpriseType.Badminton){
-            enterprise= new BadmintonEnterprise(enterpriseName);
+         else if(type == Enterprise.EnterpriseType.NGO){
+            enterprise= new NGOEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
          }
-            else if(type == Enterprise.EnterpriseType.Tennis){
-            enterprise= new TennisEnterprise(enterpriseName);
+            else if(type == Enterprise.EnterpriseType.Police){
+            enterprise= new PoliceEnterprise(enterpriseName);
+            enterpriseList.add(enterprise);
+         }
+            else if(type == Enterprise.EnterpriseType.Hospital){
+            enterprise= new HospitalEnterprise(enterpriseName);
+            enterpriseList.add(enterprise);
+         } 
+            else if(type == Enterprise.EnterpriseType.FireMan){
+            enterprise= new FireManEnterprise(enterpriseName);
             enterpriseList.add(enterprise);
          }
         return enterprise;
@@ -49,4 +56,5 @@ public class EnterpriseDirectory {
    
     
 }
+
 

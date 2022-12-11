@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author rajen
+ * @author vedant
  */
 public class Landing_JFrame extends javax.swing.JFrame {
 

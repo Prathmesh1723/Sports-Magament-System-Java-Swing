@@ -6,9 +6,6 @@
 package UI.PoliceEnterprise;
 
 
-import UI.ProviderEnterprise.*;
-import UI.ProviderManager.*;
-import UI.VolunteerOrganization.*;
 import Project.MainSystem;
 import Project.Person.Person;
 import Project.Enterprise.Enterprise;

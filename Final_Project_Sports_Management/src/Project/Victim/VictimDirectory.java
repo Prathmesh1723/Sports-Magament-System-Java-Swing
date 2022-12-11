@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author vidis
+ * @author vedant
  */
 public class VictimDirectory {
     private ArrayList<Victim> changeSeekerDirectory;

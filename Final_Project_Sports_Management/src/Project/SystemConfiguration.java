@@ -10,15 +10,15 @@ import Project.UserAccount.UserAccount;
 
 /**
  *
- * @author vedant
+ * @author prath
  */
-public class SysConfiguration {
+public class SystemConfiguration {
     public static MainSystem configureSystem(){
     MainSystem system= MainSystem.getInstance();
    
-     Person person= system.getPersonDirectory().createEmployee("SYSTEM ADMIN");
+     Person person = system.getEmployeeDirectory().createPerson("SYSTEM ADMIN");
      //making defualt username, password for application admin role
-     UserAccount ua= system.getUserAccountDirectory().createUserAccount("admin","admin", employee, new SystemAdminRole());
+     UserAccount ua= system.getUserAccountDirectory().createUserAccount("admin","admin", person, new SystemAdminRole());
     
     return system;
     }

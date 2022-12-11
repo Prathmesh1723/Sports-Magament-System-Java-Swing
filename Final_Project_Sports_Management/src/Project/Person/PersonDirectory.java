@@ -4,10 +4,29 @@
  */
 package Project.Person;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author vidis
+ * @author prath
  */
 public class PersonDirectory {
+    
+    private ArrayList<Person> personList;
+    
+    public PersonDirectory(){
+        personList=new ArrayList<>();
+    }
+
+    public ArrayList<Person> getPersonList() {
+        return personList;
+    }
+    //create a new employee using this method
+    public Person createPerson(String name){
+        Person p= new Person();
+        p.setPersonName(name);
+        personList.add(p);
+        return p;
+    }
     
 }

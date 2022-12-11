@@ -6,7 +6,7 @@ package Project.Person;
 
 /**
  *
- * @author vidis
+ * @author prath
  */
 public class Person {
     
@@ -19,7 +19,7 @@ public class Person {
         count++;
     }
 
-    public int gePersonID() {
+    public int getPersonID() {
         return personID;
     }
 

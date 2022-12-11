@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author sarvesh
+ * @author vidis
  */
 public class ItemDirectory {
 

@@ -7,7 +7,7 @@ package Project.Hospital;
 
 /**
  *
- * @author rajen
+ * @author prath
  */
 public class Hospital {
     private String doctorName;
