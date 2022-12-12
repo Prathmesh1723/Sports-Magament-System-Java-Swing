@@ -362,7 +362,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                     UserAccount a = pwr.getSender();
                     int temp = 0;
                     if (p.getItemDirectory().getSupplyList().size() <= 0) {
-                        JOptionPane.showMessageDialog(null, "No Stock available. Request from Provider");
+                        JOptionPane.showMessageDialog(null, "No resources available. Request from Provider");
                         return;
                     }
                     for (Item item : p.getItemDirectory().getSupplyList()) {
@@ -370,7 +370,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                         if (pwr.getReq().equals(item.getRequirement())&& pwr.getRtype().equals(item.getRequirementType())) {
                             
                             if (item.getItemQuantity() - pwr.getQuantity() < 0) {
-                                JOptionPane.showMessageDialog(null, "Not enough supply. Wait for sometime");
+                                JOptionPane.showMessageDialog(null, "Not enough resources to allocate. Wait for sometime");
                                 return;
                             }
                             item.setItemQuantity(item.getItemQuantity() - pwr.getQuantity());
@@ -383,7 +383,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "You have completed the request successfully");
                     }else{
                     pwr.setStatus("Requested");   
-                    JOptionPane.showMessageDialog(null, "No Stock Available, Request Failed !!","Warning",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Not enough resources to allocate, Request Failed !!","Warning",JOptionPane.WARNING_MESSAGE);
                     }
                     populateTableSupply();
                     populateTableCreate();

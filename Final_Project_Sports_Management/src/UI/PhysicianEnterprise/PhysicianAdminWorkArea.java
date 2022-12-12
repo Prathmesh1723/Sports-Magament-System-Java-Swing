@@ -81,7 +81,7 @@ public class PhysicianAdminWorkArea extends javax.swing.JPanel {
         jPanel3.setOpaque(false);
 
         btnManageEmployee.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnManageEmployee.setText(" Employee");
+        btnManageEmployee.setText("Add");
         btnManageEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageEmployeeActionPerformed(evt);

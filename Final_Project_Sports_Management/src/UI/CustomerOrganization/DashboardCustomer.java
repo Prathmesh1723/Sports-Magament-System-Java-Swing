@@ -59,7 +59,7 @@ public class DashboardCustomer extends javax.swing.JPanel {
             if (account.getEmployee().getPersonName().equals(volunteer.getVolunteerName())) {
                  vm=volunteer;
                  
-                System.out.println("Volunteer Name" + vm.getVolunteerName());
+                System.out.println("Customer Name" + vm.getVolunteerName());
             }
             
         }
